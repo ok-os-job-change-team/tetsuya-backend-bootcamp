@@ -1,7 +1,6 @@
 services:
   db:
     image: mysql:8.3
-    restart: always # OS起動時に自動起動
     environment:
       MYSQL_ROOT_PASSWORD: ${ROOT_PASS}
       MYSQL_DATABASE: ${DB_NAME}
