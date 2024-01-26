@@ -1,6 +1,5 @@
 class User
-  attr_accessor :email, :password, :updated_at
-  attr_reader :id, :created_at
+  attr_reader :id, :email, :password, :created_at,  :updated_at
 
   def initialize(id, email, password)
     @id = id
