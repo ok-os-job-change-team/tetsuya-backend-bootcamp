@@ -1,0 +1,20 @@
+services:
+  db:
+    image: mysql:8.3
+    environment:
+      MYSQL_ROOT_PASSWORD: ${ROOT_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+      TZ: ${TZ}
+    env_file:
+      - .env
+    ports:
+      - ${DB_PORT}:3306
+    volumes:
+      - data-volume:/var/lib/mysql
+      - ./conf/my.conf:/etc/mysql/conf.d/my.cnf
+      - .:/sql
+
+volumes:
+  data-volume:
