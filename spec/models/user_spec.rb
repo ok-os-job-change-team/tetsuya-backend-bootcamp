@@ -1,4 +1,4 @@
-require_relative './user' #user.rbの相対パス
+require_relative '../../app/models/user' #user.rbの相対パス
 
 RSpec.describe User do
   describe '#present?' do
