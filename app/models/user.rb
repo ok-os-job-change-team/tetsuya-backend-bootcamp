@@ -1,7 +1,7 @@
 class User
   attr_reader :id, :email, :password, :created_at,  :updated_at
 
-  def initialize(id, email, password)
+  def initialize(id:, email:, password:)
     @id = id
     @email = email
     @password = password
