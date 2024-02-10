@@ -117,30 +117,4 @@ RSpec.describe Tweet do
       end
     end
   end
-
-  describe '#output_error_messages' do
-    context 'titleが15文字かつtweet_contentが100文字の場合' do
-      it 'output_error_messageでnilが返る' do
-        tweet = Tweet.new(id: 1, user_id: 1, title: '0123456789ABCDE', tweet_content: '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789')
-        tweet.valid?
-        expect(tweet.output_error_messages).to eq nil
-      end
-    end
-
-    context 'titleがnilかつtweet_contentがnilの場合' do
-      it 'output_error_messageで「titleを入力して下さい。」「tweet_contentを入力して下さい。」が返る' do
-        tweet = Tweet.new(id: 1, user_id: 1, title: nil, tweet_content: nil)
-        tweet.valid?
-        expect{tweet.output_error_messages}.to output("titleを入力して下さい。\ntweet_contentを入力して下さい。\n") .to_stdout
-      end
-    end
-
-    context 'titleが16文字かつtweet_contentが101文字の場合' do
-      it 'output_error_messageで「titleは15文字以内にして下さい。」「tweet_contentは100文字以内にして下さい。」が返る' do
-        tweet = Tweet.new(id: 1, user_id: 1, title: '0123456789ABCDEF', tweet_content: '01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890')
-        tweet.valid?
-        expect{tweet.output_error_messages}.to output("titleは15文字以内にして下さい。\ntweet_contentは100文字以内にして下さい。\n") .to_stdout
-      end
-    end
-  end
 end

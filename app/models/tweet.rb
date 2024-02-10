@@ -48,8 +48,4 @@ class Tweet
     result_tweet_content_valid = tweet_content_valid?
     result_title_valid && result_tweet_content_valid
   end
-
-  def output_error_messages
-    puts @errors
-  end
 end
