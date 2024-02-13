@@ -1,14 +1,14 @@
--- tweetsテーブルを作成
-CREATE TABLE tweets (
+-- Tweetsテーブルを作成
+CREATE TABLE Tweets (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   user_id INT NOT NULL,
   title VARCHAR(30),
   tweet_content VARCHAR(140),
-  FOREIGN KEY fk_user_id(user_id) REFERENCES users(id) -- user_idカラムとusersテーブルのidカラムを紐付け
+  FOREIGN KEY fk_user_id(user_id) REFERENCES users(id) -- user_idカラムとUsersテーブルのidカラムを紐付け
 );
 
--- tweetsに挿入
-INSERT INTO tweets
+-- Tweetsに挿入
+INSERT INTO Tweets
   (id, user_id, title, tweet_content)
 VALUES
   (1, 1, '忙しいから…バカっ！', '今日も仕事でバタバタだけど、別に誰かに頼られたくなんかないし！…でも、ちょっとだけ寂しいのかも。'),
@@ -28,5 +28,5 @@ VALUES
   (15, 3, '星空の夜', '窓から星を見てると、夢の中みたい。星座を見つけたり、お星さまにお話をしてる気分。ぐっすり眠れそうだね。');
 
 
--- tweetsテーブルの内容を表示
-SELECT * FROM tweets;
+-- Tweetsテーブルの内容を表示
+SELECT * FROM Tweets;
