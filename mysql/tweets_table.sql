@@ -4,7 +4,7 @@ CREATE TABLE Tweets (
   user_id INT NOT NULL,
   title VARCHAR(30),
   tweet_content VARCHAR(140),
-  FOREIGN KEY fk_user_id(user_id) REFERENCES users(id) -- user_idカラムとUsersテーブルのidカラムを紐付け
+  FOREIGN KEY fk_user_id(user_id) REFERENCES Users(id) -- user_idカラムとUsersテーブルのidカラムを紐付け
 );
 
 -- Tweetsに挿入
