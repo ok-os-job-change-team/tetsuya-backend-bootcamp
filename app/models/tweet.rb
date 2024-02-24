@@ -1,5 +1,5 @@
 class Tweet
-  attr_reader :id, :user_id, :title, :tweet_content,  :errors
+  attr_reader :id, :user_id, :title, :tweet_content, :errors
   require_relative 'user'
 
   def initialize(id:, user_id:, title:, tweet_content:)
@@ -15,8 +15,7 @@ class Tweet
   end
 
   def self.build_by_user(user:, id:, title:, tweet_content:)
-    user_id = user.id
-    Tweet.new(id: id, user_id: user_id, title: title, tweet_content: tweet_content)
+    Tweet.new(id: id, user_id: user.id, title: title, tweet_content: tweet_content)
   end
 
   def title_valid?
