@@ -2,11 +2,11 @@
 erDiagram
 
 %% 1:0or多
-Users ||--o{ Tweets: "1:n"
-Users ||--o{ Favorites: "1:n"
-Tweets ||--o{ Favorites: "1:n"
+users ||--o{ tweets: "1:n"
+users ||--o{ favorites: "1:n"
+tweets ||--o{ favorites: "1:n"
 
-Users {
+users {
   INT id
   VARCHAR email
   VARCHAR password
@@ -14,14 +14,14 @@ Users {
   DATETIME updated_at
 }
 
-Tweets{
+tweets{
   INT id
   INT user_id
   VARCHAR title
   VARCHAR tweet_content
 }
 
-Favorites{
+favorites{
   INT id
   INT user_id
   INT tweet_id
