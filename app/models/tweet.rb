@@ -1,7 +1,7 @@
+require_relative 'user'
+
 class Tweet
   attr_reader :id, :user_id, :title, :tweet_content, :errors
-  require_relative 'user'
-
   def initialize(id:, user_id:, title:, tweet_content:)
     @id = id
     @user_id = user_id
