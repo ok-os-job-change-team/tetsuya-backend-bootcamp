@@ -1,7 +1,4 @@
-require_relative '../../app/models/user' #user.rbの相対パス
-require_relative '../../app/models/tweet' #tweet.rbの相対パス
 require_relative '../../app/models/favorite' #favorite.rbの相対パス
-
 
 RSpec.describe Favorite do
   describe '#present?' do
@@ -25,9 +22,11 @@ RSpec.describe Favorite do
       it 'favorite.user_idが1を、favorite.tweet_idが22を返す' do
         user = User.new(id: 1, email: 'user@example.com', password: 'p@ssw0rd')
         tweet = Tweet.build_by_user(user: user, id: 22, title: 'タイトル', tweet_content: '本文')
-        favorite = Favorite.build_by_user_and_tweet(user: user, tweet: tweet, id: 111)
-        expect(favorite.user_id).to eq 1
-        expect(favorite.tweet_id).to eq 22
+        favorite = Favorite.build_by_user_and_tweet(user_id: user.id, tweet_id: tweet.id, id: 111)
+        aggregate_failures do
+          expect(favorite.user_id).to eq 1
+          expect(favorite.tweet_id).to eq 22
+        end
       end
     end
   end
