@@ -1,9 +1,36 @@
 services:
   app:
-    build: . # Dockerfileがあるディレクトリへの相対パス
+    image: ruby:3.3
     ports:
       - 3000:3000
     volumes:
       - .:/app # [ホストディレクトリ]:[コンテナ内ディレクトリ]
     working_dir: /app
     tty: true # コンテナの正常終了を阻止
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: ${ROOT_PASS}
+      # MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+      TZ: ${TZ}
+    env_file:
+      - .env
+    ports:
+      - ${DB_PORT}:3306
+    volumes:
+      - data-volume:/var/lib/mysql
+      - ./conf/my.conf:/etc/mysql/conf.d/my.cnf
+      - ./mysql:/sql
+    tty: true
+    stdin_open: true
+
+volumes:
+  data-volume:
