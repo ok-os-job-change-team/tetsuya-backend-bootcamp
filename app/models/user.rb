@@ -25,7 +25,6 @@ class User
       database: 'test'
     )
 
-    client.query('SELECT * FROM users').each do |e1|
-    end
+    client.query('SELECT * FROM users').map { _1 }
   end
 end
